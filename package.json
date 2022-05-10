@@ -6,7 +6,7 @@
     "scripts": {
       "build": "tsc",
       "prestart": "npm run build",
-      "start": "node dist/server.js"
+      "start": "node dist/app/bootstrapper.js"
     },
     "author": "",
     "license": "ISC",
