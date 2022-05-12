@@ -1,18 +1,25 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import * as express from 'express';
+import { helloRoute } from "./app/routes/helloroutes";
+
+console.log('hey ya');
+
 
 const app = express();
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to test-nx!' });
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("hey there");
 });
 
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+app.use('/hey', helloRoute)
+
+const PORT = process.env.PORT || 1337
+
+async function start() {
+  app.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`);
+  });
+}
+
+start();
