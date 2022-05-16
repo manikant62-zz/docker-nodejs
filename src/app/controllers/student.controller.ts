@@ -13,10 +13,10 @@ export async function createStudent(data: StudentData): Promise<Student> {
   if (!data.standard) throw new Error("Standard is Compulsory");
   if (!data.rollNo) throw new Error("rollNo is Compulsory");
 
-  const articleRepo = getRepository(Student);
+  const studentRepo = getRepository(Student);
 
   try {
-    const student = await articleRepo.save(
+    const student = await studentRepo.save(
       new Student(data.name, data.standard, data.rollNo)
     );
 
